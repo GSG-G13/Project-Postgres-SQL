@@ -17,6 +17,13 @@ INSERT INTO user (customer_name, email, phone, country,city, purpose) VALUES
 ('moh', 'moh123@gmail.com', '00971452379284', 'Palestine','Gaza', 'Commercial');
 
 
+CREATE TABLE IF NOT EXISTS photographer(
+    id SERIAL PRIMARY KEY,
+    photo_name VARCHAR(100) NOT NULL,
+    customer_id INT,
+    FOREIGN KEY (customer_id) REFERENCES user(customer_id)
+);
+
 
 
 INSERT INTO photographer (photo_name) VALUES ('shatha');
