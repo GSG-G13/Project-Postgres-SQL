@@ -1,3 +1,3 @@
 # Project-Postgres-SQL
 Build Project in Postgres SQL
-<img srs="./public/images/Capture.PNG">
+![](./public/images/Capture.PNG)
