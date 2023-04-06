@@ -43,5 +43,5 @@ This is an Express and postgressql web application that aims to provide an photo
 ---
 ## Team Members 🙋
 
-* [Mohammed Sbeata](https://github.com/Shatha-Amin)
-* [Shatha Amin](https://github.com/MohannadSabaa)
+* [Mohammed Sbeata](https://github.com/Mohammed-Sbeata)
+* [Shatha Amin](https://github.com/Shatha-Amin)
