@@ -1,5 +1,5 @@
 BEGIN;
-DROP TABLE IF EXISTS user, photographer CASCADE;
+DROP TABLE IF EXISTS users, photographer CASCADE;
 
 CREATE TABLE IF NOT EXISTS users(
     id SERIAL PRIMARY KEY,
@@ -21,11 +21,11 @@ CREATE TABLE IF NOT EXISTS photographer(
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES user(id)
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 
 
-INSERT INTO photographer (photo_name) VALUES ('shatha');
+INSERT INTO photographer (name) VALUES ('shatha');
 
 COMMIT;

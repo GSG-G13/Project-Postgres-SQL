@@ -7,13 +7,18 @@ const router = express.Router();
 
 router.get('/photographer', (req, res) => {
   getDataQuery()
-    .then(result => res.json(result.rows))
-    .catch((err) => res.status(500).json({ msg: 'Internal Server Error', err }));
+    .then(result => {
+      res.json(result.rows)
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ msg: 'Internal Server Error kl', err })
+    });
 });
 
-router.post('/costumer-info', (req, res) => {
+router.post('/customer', (req, res) => {
   postDataQuery(req.body)
-    .then((result) => res.redirect('/'))
+    .then((result) => res.json(result))
     .catch((err) => res.status(500).json({ msg: 'Internal Server Error', err }));
 });
 

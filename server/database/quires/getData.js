@@ -1,9 +1,5 @@
-const dbConnection = require("../config/connection");
+const connection = require('../db_connection');
 
-const getData = () => {
-  return dbConnection.query(`SELECT * FROM users;`);
-};
+const getDataQuery = () =>  connection.query('SELECT name, email, phone,booking_date, city, purpose FROM users;');
 
-module.exports = {
-  getData
-};
+module.exports = getDataQuery;
