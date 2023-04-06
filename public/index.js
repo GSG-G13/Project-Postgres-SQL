@@ -61,4 +61,6 @@ btn.addEventListener('click', (e)=>{
         table.appendChild(row);
       });
     });
+    const FormData = document.getElementById("form_data")
+    FormData.reset();
 });
