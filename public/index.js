@@ -1,28 +1,64 @@
-/* eslint-disable no-use-before-define */
-fetch('/photographer')
-  .then((res) => res.json())
-  .then((photographer) => {
-    const customersTable = document.querySelector('.customers-table');
-    photographer.forEach((item) => {
-      const tableRow = createElement('li', 'table-row', customersTable);
-      const col1 = createElement('div', 'col col-1', tableRow);
-      col1.textContent = item.cus_name;
-      const col2 = createElement('div', 'col col-2', tableRow);
-      col2.textContent = item.email;
-      const col3 = createElement('div', 'col col-3', tableRow);
-      col3.textContent = item.phone;
-      const col4 = createElement('div', 'col col-4', tableRow);
-      col4.textContent = item.city;
-      const col5 = createElement('div', 'col col-5', tableRow);
-      col5.textContent = item.country;
-      const col6 = createElement('div', 'col col-6', tableRow);
-      col6.textContent = item.purpose;
-    });
-  });
+const btn = document.getElementById('submit');
 
-const createElement = (tag, classname, parent) => {
-  const item = document.createElement(tag);
-  item.className = classname;
-  parent.appendChild(item);
-  return item;
-};
+btn.addEventListener('click', (e)=>{
+  e.preventDefault();
+  const name = document.getElementById('name-id');
+  const email = document.getElementById('email-id');
+  const phone = document.getElementById('phone-id');
+  const country = document.getElementById('country-id');
+  const city = document.getElementById('City-id');
+  const purpose = document.getElementById('purpose-id');
+  const booking_date = document.getElementById('booking_id-id');
+  fetch('/customer' , {
+    method: 'POST',
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body : JSON.stringify({
+      name :name.value ,
+      email :email.value ,
+      phone :phone.value ,
+      country :country.value ,
+      city :city.value ,
+      purpose :purpose.value ,
+      booking_date :booking_date.value 
+    })
+  })
+  .then((data) => data.json())
+  .then(data => {
+    console.log(data.rows)
+  return data.rows})
+    .then((data) => {
+      const table = document.querySelector('.customers-table');
+      data.forEach((user) => {
+        
+        const row = document.createElement("tr");
+
+        const name = document.createElement("td");
+        name.textContent = user.name;
+        row.appendChild(name);
+
+        const email = document.createElement("td");
+        email.textContent= user.email;
+        row.appendChild(email);
+
+        const phone = document.createElement("td");
+        phone.textContent= user.phone;
+        row.appendChild(phone);
+
+        const city = document.createElement("td");
+        city.textContent= user.city;
+        row.appendChild(city);
+
+        const purpose = document.createElement("td");
+        purpose.textContent= user.purpose;
+        row.appendChild(purpose);
+
+        const booking_date = document.createElement("td");
+        booking_date.textContent= user.booking_date;
+        row.appendChild(booking_date);
+
+        table.appendChild(row);
+      });
+    });
+});
